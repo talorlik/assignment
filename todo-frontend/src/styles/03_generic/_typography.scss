@@ -1,0 +1,50 @@
+body {
+  color: color(primary);
+}
+
+.text {
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--skinny {
+    font-weight: 300;
+  }
+
+  &--upper {
+    text-transform: uppercase;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  @each $color, $value in $colors {
+    &--#{$color} {
+
+      color: $value;
+
+      .mat-card {
+        color: value;
+      }
+    }
+  }
+
+  @each $rule, $sizes in $text-sizes {
+    &--#{$rule} {
+      @each $breakpoint, $size in $sizes {
+        @include media($breakpoint){
+          font-size: $size;
+        }
+      }
+    }
+  }
+}

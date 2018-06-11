@@ -1,0 +1,70 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+
+
+$primary-theme: (
+  100: lighten(color(primary), .5),
+  500: color(primary),
+  700: color(secondary),
+  contrast: (
+    100: color(gray),
+    500: color(white),
+    700: color(white)
+  )
+);
+
+$light-theme-foreground: (
+  base:              color(primary),
+  divider:           color(primary),
+  dividers:          color(primary),
+  disabled:          color(primary),
+  disabled-button:   rgba(black, 0.26),
+  disabled-text:     color(primary),
+  hint-text:         color(primary),
+  secondary-text:    color(secondary),
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              color(primary),
+  slider-min:        rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);
+
+$light-theme-background: (
+  status-bar: color(gray),
+  app-bar:    color(gray),
+  background: color(white),
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card:       white,
+  dialog:     white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: color(gray),
+  selected-button: color(gray),
+  selected-disabled-button: color(gray),
+  disabled-button-toggle: color(gray),
+  unselected-chip: color(gray),
+  disabled-list-option: color(gray)
+);
+
+$primary: mat-palette($primary-theme);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+// Creates a container object for a light theme to be given to individual component theme mixins.
+@function light-theme($primary, $accent, $warn ) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: false,
+    foreground: $light-theme-foreground,
+    background: $light-theme-background,
+  );
+}
+
+$theme: light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);

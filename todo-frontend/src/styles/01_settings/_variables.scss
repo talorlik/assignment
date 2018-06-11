@@ -1,0 +1,48 @@
+$colors: (
+  black:        #000000,
+  white:        #ffffff,
+  off-white:    #F8F9FC,
+  gray:         #323C47,
+  medium-gray:  #68717A,
+  light-gray:   #DBDCE3,
+  primary:      #0071CE,
+  secondary:    #002F87,
+  warning:      #CB3A3B,
+  yellow:       #E27E01,
+  green:        #0F9D58,
+  dark-blue:    #002F87
+);
+
+$breakpoint-lg: ">=desktop";
+$breakpoint-md: ">=tablet";
+$breakpoint-sm: ">=phone";
+$breakpoint-xs: ">0px";
+
+$body-font-size: 14px;
+
+$text-sizes: (
+  xxl: (
+    $breakpoint-xs: 42px
+  ),
+  xl: (
+    $breakpoint-xs: 22px
+  ),
+  lg: (
+    $breakpoint-xs: 16px
+  ),
+  md: (
+    $breakpoint-xs: 14px
+  ),
+  sm: (
+    $breakpoint-xs: 12px
+  ),
+  xs: (
+    $breakpoint-xs: 10px
+  )
+);
+
+
+$card-header-padding: 10px 25px 10px 25px;
+$card-content-padding: 20px 25px 25px 25px;
+
+$default-animation-duration: 0.2s;

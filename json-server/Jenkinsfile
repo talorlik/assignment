@@ -1,0 +1,90 @@
+pipeline{
+
+  agent none
+
+  stages{
+
+    stage("Build"){
+
+      agent{
+        label "Linux"
+      }
+
+      steps{
+
+        checkout scm
+
+        script{
+          // Git short commit is used for Docker image tagging
+          shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+
+          // Login to AWS ECR to pull Docker images.
+          sh "eval \$( aws ecr get-login --no-include-email --region eu-west-1 )"
+
+          docker.withRegistry("https://197094583576.dkr.ecr.eu-west-1.amazonaws.com"){
+
+            if( env.BRANCH_NAME == "dev" ){
+                sh "docker build -t json-server:${env.BRANCH_NAME}-${shortCommit} ."
+            } else if (env.BRANCH_NAME == "master") {
+              sh "docker build -t json-server:${env.BRANCH_NAME}-${shortCommit} ."
+            }
+
+            def jsonserver = docker.image("json-server:${env.BRANCH_NAME}-${shortCommit}")
+            if( env.BRANCH_NAME == "dev" || env.BRANCH_NAME == "uat" || env.BRANCH_NAME == "master"){
+              jsonserver.push()
+              jsonserver.push("${env.BRANCH_NAME}-latest")
+            }
+          }
+        }
+      }
+      post{
+        always{
+         deleteDir()
+        }
+      }
+    }
+
+    stage("Deploy"){
+
+      agent{
+        label "Linux"
+      }
+
+      steps{
+
+        script{
+
+          if( env.BRANCH_NAME == "master"){
+
+            input "Deploy?"
+
+            sh """
+              kubectl --namespace=front-end set image deployments/json-server-prod json-server-prod=197094583576.dkr.ecr.eu-west-1.amazonaws.com/json-server:${env.BRANCH_NAME}-${shortCommit} --record
+            """
+          } else if ( env.BRANCH_NAME == "dev" || env.BRANCH_NAME == "uat") {
+             sh """
+              kubectl --namespace=front-end-${env.BRANCH_NAME} set image deployments/json-server-${env.BRANCH_NAME} json-server-${env.BRANCH_NAME}=197094583576.dkr.ecr.eu-west-1.amazonaws.com/json-server:${env.BRANCH_NAME}-${shortCommit} --record
+             """
+          }
+        }
+      }
+      post{
+        always{
+          deleteDir()
+        }
+      }
+    }
+  }
+
+  post{
+    success{
+      slackSend message: ":sunglasses: Completed - ${env.JOB_NAME} (${env.BRANCH_NAME} branch, build number ${env.BUILD_NUMBER}) (<${env.RUN_DISPLAY_URL}|Open>)", channel: "build-monitor", color: "good"
+    }
+    failure{
+      slackSend message: "@channel :sob: Failed - ${env.JOB_NAME} (${env.BRANCH_NAME} branch, build number ${env.BUILD_NUMBER}) (<${env.RUN_DISPLAY_URL}|Open>)", channel: "build-monitor", color: "danger"
+    }
+    aborted{
+      slackSend message: ":sob: Aborted - ${env.JOB_NAME}(${env.BRANCH_NAME} branch, build number ${env.BUILD_NUMBER})(<${env.RUN_DISPLAY_URL}|Open>)", channel: "build-monitor", color: "danger"
+    }
+  }
+}

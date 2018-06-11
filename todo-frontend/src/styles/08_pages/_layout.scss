@@ -1,0 +1,42 @@
+.mat-drawer-container.layout-container {
+  height: 100%;
+  width: 100%;
+}
+
+mat-drawer-content.layout-content {
+  padding-bottom: 0;
+}
+
+.sidenav {
+  logo {
+    text-align: center;
+    svg {
+      width: 124px;
+    }
+  }
+}
+
+.mat-drawer {
+  width: 240px;
+}
+
+mat-toolbar.mat-toolbar {
+  padding: 4px 24px 4px 24px;
+
+  .filter-container {
+    z-index: 20;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.container.is-fluid {
+  margin: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}

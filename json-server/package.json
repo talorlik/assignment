@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This servers as the mock api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start-dev": "json-server db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/vatit-admin/json-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/vatit-admin/json-server#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express-jwt": "^5.3.1",
+    "json-server": "^0.12.1",
+    "jwks-rsa": "^1.2.1"
+  }
+}

@@ -1,0 +1,12 @@
+<sidenav [items]="sidenavItems">
+  <mat-drawer-container flex layout="row" layout-fill class="layout-container">
+    <mat-drawer-content flex layout="column" class="layout-content">
+      <toolbar [loggedin]="loggedin" [initials]="initials" [fullName]="fullName"></toolbar>
+      <scrollbar flex layout="column">
+        <div class="container is-fluid" #scrollContainer>
+          <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
+        </div>
+      </scrollbar>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</sidenav>

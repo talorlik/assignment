@@ -1,0 +1,37 @@
+mat-toolbar.mat-toolbar {
+    position: relative;
+    padding: 4px;
+    background-color: color(white);
+    box-shadow: 0 2px 10px 0 rgba(42, 53, 63, 0.1);
+    .filter-container {
+        position: absolute;
+        top: calc(100% + 5px);
+        width: 100%;
+        overflow: hidden;
+        background-color: color(white);
+        transition: 0.2s;
+    }
+    .filter-form {
+        button {
+            margin: 10px;
+        }
+    }
+}
+
+mat-placeholder {
+  font-size: 14px;
+}
+
+.mat-select-search-panel {
+    position: absolute;
+    top: 81px;
+    left: 44px;
+}
+
+.mat-select-search-inner {
+  width: 100% !important;
+}
+
+.mat-select-search-clear {
+  top: 10px !important;
+}

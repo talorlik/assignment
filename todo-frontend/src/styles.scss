@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
+@import './styles/styles.scss';
+@import 'assets/css/global.css';
+@import 'assets/css/todomvc-app.css';
+@import 'assets/css/todomvc-common.css';
+
+.mat-drawer-container.layout-container {
+  height: 100%;
+  width: 100%;
+}
+
+.mat-drawer-content.layout-content {
+  overflow: hidden;
+}
+
+.wrapper {
+  height: 100%;
+  max-width: 100%;
+}
+
+.sidenav-container {
+  width: 1000px;
+}
+
+.quickpanel {
+  z-index: 100;
+  width: 330px;
+  min-width: 330px;
+  max-width: 330px;
+}

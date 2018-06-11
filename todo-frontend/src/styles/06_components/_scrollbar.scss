@@ -1,0 +1,13 @@
+scrollbar {
+  height: 100%;
+}
+
+[scrollbar] > .scroll-content, scrollbar > .scroll-content {
+  display: inherit;
+  flex-direction: inherit;
+  flex: inherit;
+  justify-content: inherit;
+  align-content: inherit;
+  align-items: inherit;
+  height: 100%;
+}
