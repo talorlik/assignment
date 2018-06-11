@@ -4,7 +4,7 @@ ADD . /usr/src/app
 
 WORKDIR /usr/src/app
 
-#RUN npm init -y
+RUN npm i npm@latest -g
 RUN npm install
 
 EXPOSE 3000

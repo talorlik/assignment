@@ -6,6 +6,7 @@ ARG BUILD_ENV
 COPY package.json /usr/src/app/package.json
 COPY package-lock.json /usr/src/app/package-lock.json
 WORKDIR /usr/src/app
+RUN npm i npm@latest -g
 RUN npm install
 COPY . .
 RUN npm run $BUILD_ENV

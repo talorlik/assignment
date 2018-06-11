@@ -9,19 +9,19 @@ version: "2"
 services:
   json-server:
     build: ./json-server/
-    image: json-server:0.1.0
+    image: json-server:1.0.0
     ports:
       - "3000:3000"
     container_name: json-server
 
-  front-end:
+  todo-frontend:
     build: 
-      context: ./front-end/
+      context: ./todo-frontend/
       args:
         BUILD_ENV: build-prod
-    image: front-end:0.1.0
+    image: todo-frontend:1.0.0
     links:
       - json-server
     ports:
       - "4500:80"
-    container_name: front-end
+    container_name: todo-frontend

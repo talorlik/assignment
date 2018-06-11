@@ -70,8 +70,8 @@ server.use(cors());
 //   next();
 // });
 // Use middleware on all incoming requrests to validate the token.
-// server.all("*", authCheck);
-server.use(authCheck);
+// server.all("*", jwtCheck);
+server.use(jwtCheck);
 
 // In order to run on https 
 // var options = {
