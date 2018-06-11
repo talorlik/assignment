@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
 
 import { TodoRoutingModule, todoComponents } from "./todo-routing.module";
 import { TodoDataService } from "./todo-data.service";
@@ -14,7 +13,6 @@ import { TodoListFooterComponent } from "./todo-list-footer/todo-list-footer.com
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
     TodoRoutingModule
   ],
   declarations: [

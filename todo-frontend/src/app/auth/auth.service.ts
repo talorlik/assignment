@@ -70,25 +70,37 @@ export class AuthService {
     this.accessToken = authResult.accessToken;
     this.userProfile = profile;
     this.authenticated = true;
+
+    localStorage.setItem('loggedin', JSON.stringify(
+      {
+        expiresAt: this.expiresAt,
+        accessToken: this.accessToken,
+        userProfile: this.userProfile,
+        authenticated: this.authenticated
+      })
+    );
   }
 
   logout() {
     // Log out of Auth0 session
     // Ensure that returnTo URL is specified in Auth0
     // Application settings for Allowed Logout URLs
+    localStorage.removeItem("loggedin");
+
     this.auth0.logout({
       returnTo: "http://localhost:4500",
       clientID: environment.auth.clientID
     });
   }
 
-  public isLoggedIn(): boolean {
+  get isLoggedIn(): boolean {
+    const loggedin = JSON.parse(localStorage.getItem("loggedin"));
     // Check if current date is before token
     // expiration and user is signed in locally
-    return Date.now() < this.expiresAt && this.authenticated;
+    return (loggedin === null ? Date.now() < this.expiresAt && this.authenticated : Date.now() < loggedin.expiresAt && loggedin.authenticated);
   }
 
   public tokenChange() {
-    this.tokenChanged.emit(this.isLoggedIn());
+    this.tokenChanged.emit(this.isLoggedIn);
   }
 }

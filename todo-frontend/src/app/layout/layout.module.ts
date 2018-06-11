@@ -3,14 +3,10 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 
-import { HttpClientModule } from "@angular/common/http";
-import { HttpModule } from "@angular/http";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { SidenavModule } from "../layout-components/sidenav/sidenav.module";
 import { ToolbarModule } from "../layout-components/toolbar/toolbar.module";
 import { ScrollbarModule } from "../layout-components/scrollbar/scrollbar.module";
-
-import { AuthModule } from "../auth/auth.module";
 
 import { LayoutComponent } from './layout.component';
 
@@ -19,9 +15,6 @@ import { LayoutComponent } from './layout.component';
     CommonModule,
     BrowserAnimationsModule,
     RouterModule,
-    HttpClientModule,
-    HttpModule,
-    AuthModule,
     MatSidenavModule,
     SidenavModule,
     ToolbarModule,
