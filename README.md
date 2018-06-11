@@ -47,3 +47,9 @@ Run `npm e2e` to execute the end-to-end tests via [Protractor](http://www.protra
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+##Known issues
+
+1. Page content not expanding to fill window.
+2. Routing issue: on refresh page is lost due to loss of authorisation.
+3. Bottom counter does not reflect true remaining items.

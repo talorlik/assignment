@@ -19,7 +19,8 @@ const routes: Routes = [
       {
         path: "todos",
         canActivate: [AuthGuard],
-        loadChildren: "app/todo/todo.module#TodoModule"
+        loadChildren: "app/todo/todo.module#TodoModule",
+        runGuardsAndResolvers: "always"
       }
     ]
   },
@@ -27,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: "reload" })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

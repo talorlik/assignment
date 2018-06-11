@@ -51,12 +51,7 @@ export class ApiService {
       }
     }
 
-    return this.http.get(url, { headers: this.headers, params: params })
-      .map(res => {
-          return [this.extractData];
-        }
-      )
-      .catch(this.handleError);
+    return this.http.get<any[]>(url, { headers: this.headers, params: params });
   }
   
   // API: GET e.g. /todos/:id
