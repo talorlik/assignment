@@ -10,12 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/vatit-admin/json-server.git"
+    "url": "https://github.com/talorlik/assignment"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/vatit-admin/json-server#readme",
   "dependencies": {
     "cors": "^2.8.4",
     "express-jwt": "^5.3.1",
