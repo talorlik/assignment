@@ -22,7 +22,7 @@ Instructions on how to run the docker-compose are in the docker-compose.yml file
 
 ## Development server
 
-Run `npm start` for a dev server. Navigate to `http://localhost:4500/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4400/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

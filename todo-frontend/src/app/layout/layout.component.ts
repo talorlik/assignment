@@ -3,8 +3,6 @@ import { ActivatedRoute } from "@angular/router";
 import { SidenavItem } from "../layout-components/types";
 import { AuthService } from "../auth/auth.service";
 
-import "rxjs/add/operator/map";
-
 @Component({
   selector: "app-layout",
   templateUrl: "./layout.component.html",

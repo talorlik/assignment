@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 
@@ -33,7 +34,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.data.map(data => data["todos"]).subscribe(todos => {
+    this.route.data.pipe(map(data => data["todos"])).subscribe(todos => {
       this.todos = this.todoDataService
         .mapListToModelList(todos)
         .map(todo => todo as Todo);

@@ -88,7 +88,7 @@ export class AuthService {
     localStorage.removeItem("loggedin");
 
     this.auth0.logout({
-      returnTo: "http://localhost:4500",
+      returnTo: "http://localhost:4400",
       clientID: environment.auth.clientID
     });
   }

@@ -14,7 +14,7 @@ import { NO_ERRORS_SCHEMA } from "@angular/compiler/src/core";
 import { ApiService } from "../api.service";
 import { ApiMockService } from "../api-mock.service";
 import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 
 describe("TodoComponent", () => {
   let component: TodoComponent;

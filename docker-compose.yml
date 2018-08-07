@@ -23,5 +23,5 @@ services:
     links:
       - json-server
     ports:
-      - "4500:80"
+      - "4400:80"
     container_name: todo-frontend
